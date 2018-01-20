@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Games Arena — Listing the games developed for different platforms ! By Samay Kumar Jain</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script>
+    function createNode(element) {
+      return document.createElement(element);
+    }
+
+  function append(parent, el) {
+    return parent.appendChild(el);
+  }
+
+  const ul = document.getElementById('authors');
+  const url = 'http://starlord.hackerearth.com/gamesarena';
+  fetch(url)
+  .then((resp) => resp.json())
+  .then(function(data) {
+    let authors = data;
+    console.log(data);
+  })
+  .catch(function(error) {
+    console.log(JSON.stringify(error));
+  });
+</script>
+<style>
+body{
+  background: url("https://wallpaperscraft.com/image/battlefield_4_game_explosion_ea_digital_illusions_ce_92996_1920x1080.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+
+}
+.mr-auto{
+  margin-left:auto;
+  margin-right:unset!important;
+}
+#myInput {
+    background-image: url('searchicon.png'); /* Add a search icon to input */
+    background-position: 10px 12px; /* Position the search icon */
+    background-repeat: no-repeat; /* Do not repeat the icon image */
+    width: 100%; /* Full-width */
+    font-size: 16px; /* Increase font-size */
+    padding: 12px 20px 12px 40px; /* Add some padding */
+    border: 1px solid #ddd; /* Add a grey border */
+    margin-bottom: 12px; /* Add some space below the input */
+}
+h5{
+  color:grey;
+}
+li{
+  color: grey;
+}
+.card>img{
+  border: 3px solid white;
+}
+.card{
+  background-color: transparent;
+  color: white;
+  border: none;
+}
+.card .card-title{
+  margin-bottom: 0;
+}
+.card-title:hover{
+  color: grey;
+}
+.card-img-top:hover{
+  opacity: .8;
+}
+</style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Games Arena</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#">Register</a>
+        </li>
+      </ul>
+      <!-- <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form> -->
+    </div>
+    </nav>
+    <div style="margin-top:12%;">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12" style="color:white;">
+            <h2 class="text-center">Welcome to Games Searching Website</h2>
+          </div>
+          <div class="col-md-12">
+            <h1 class="text-center" style="color:white;">Games Arena Logo</h1>
+          </div>
+        </div>
+        <div class="row" style="margin-top:10px;margin-bottom:10px;">
+          <div class="offset-md-4 col-md-4">
+            <div class="form-group">
+              <input type="search" id="myInput" onsearch="myFunction()" placeholder="Search for game">
+              <!-- <input type="text" class="form-control" id="gamename" aria-describedby="emailHelp" placeholder="Game"> -->
+              <span class="text-center" style="color:white">Press Enter to Search</span>
+            </div>
+          </div>
+        </div>
+        <div id="search_results" class="row">
+        </div>
+        <div class="row">
+          <div class="center-block" style=margin-left:auto;margin-right:auto;margin-bottom:20px;>
+            <a href="list.html" class="btn btn-success text-center">Go to List of all Games</a>
+          </div>
+        </div>
+      </div>
+  </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js"></script><script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script>
+      function myFunction() {
+            $("#search_results").empty();
+            // Declare variables
+            var input, filter,count;
+            input = document.getElementById('myInput');
+            filter = input.value.toUpperCase();
+            count = 0;
+            if (input != null){
+            // API Calling
+            function createNode(element) {
+              return document.createElement(element);
+            }
+
+            function append(parent, el) {
+              return parent.appendChild(el);
+            }
+
+            const ul = document.getElementById('authors');
+            const url = 'http://starlord.hackerearth.com/gamesarena';
+            fetch(url)
+            .then((resp) => resp.json())
+            .then(function(data) {
+              let authors = data;
+              for (var i = 1; i < data.length; i++) {
+                var a = data[i].title;
+                if (a.toUpperCase().indexOf(filter) > -1) {
+                  count++;
+                  $("#search_results").append('<div class="col-md-3"><div class="card"><img data-toggle="modal" data-target="#game-'+i+'" style="cursor:-webkit-grab;" class="card-img-top" src="https://cdn3.vox-cdn.com/uploads/chorus_asset/file/4000894/1.0.jpg" alt="Card image cap" ><div class="card-block"><div class="modal fade" id="game-'+i+'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"><div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="exampleModalLabel">'+data[i].title+'</h5><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div><div class="modal-body"><ul><li>Platform: '+data[i].platform+'</li><li>Score: '+data[i].score+'</li><li>Genre: '+data[i].genre+'</li><li>Editior Choice'+data[i].editiors_choice+'</li></ul></div></div></div></div><h6 class="card-title" style="cursor:-webkit-grab;" data-toggle="modal" data-target="#game-'+i+'">'+data[i].title+'</h6><p>'+data[i].score+'</p></div></div></div>');
+                }
+              }
+              if (count <= 0){
+                alert("No results found");
+              }
+            })
+            .catch(function(error) {
+              console.log(JSON.stringify(error));
+            });
+            //API Calling
+
+            // Loop through all list items, and hide those who don't match the search query
+          }
+        }
+    </script>
+  </body>
+</html>
